@@ -38,24 +38,17 @@ app.get("/posts", (req, res) => {
 // create a new post
 app.post("/api/newpost", (req, res) => {
     const da = new Date();
-    let newPo = {};
-    if (posts.length === 0) {
-        newPo = {
-            id: 1,
+    let idnum = 1;
+    if (posts.length !== 0) {
+        idnum = posts[posts.length-1].id +1
+    };
+    const newPo = {
+            id: idnum,
             author: req.body.author,
             subject: req.body.subject,
             post: req.body.post,
             date: da,
         };
-    } else {
-        newPo = {
-            id: posts[posts.length-1].id +1,
-            author: req.body.author,
-            subject: req.body.subject,
-            post: req.body.post,
-            date: da,
-        };
-    }
     posts.push(newPo);
     res.json(newPo);
 });
