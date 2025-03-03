@@ -18,6 +18,9 @@
                     <div class="d-grid d-sm-flex justify-content-sm-center">
                         <button type="submit" class="btn btn-success btn-lg px-4 gap-3">New Post</button>  
                     </div>
+                    <% if (locals.success_m) { %>
+                        <p id="suc"><%= success_m %></p>
+                    <% }%>
                     <% if (locals.error) { %>
                             <p><%= error %></p>
                         <% }%>
@@ -38,14 +41,14 @@
                     <path d="M4.285 12.433a.5.5 0 0 0 .683-.183A3.5 3.5 0 0 1 8 10.5c1.295 0 2.426.703 3.032 1.75a.5.5 0 0 0 .866-.5A4.5 4.5 0 0 0 8 9.5a4.5 4.5 0 0 0-3.898 2.25.5.5 0 0 0 .183.683M7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5m4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5"/>
                   </svg> There is no post yet, start to create new post!</p>
             <% } else { %>
-                <% for (var i = poste.length-1; i >-1; i--) { %> 
-                    <div class="feature col pb-5">
+                <% for (var i = 0; i < poste.length; i++) { %> 
+                    <div class="feature col pb-5 post<%= poste[i].id %>">
                         <h4><%= poste[i].subject %></h4>
                         <p><%= poste[i].post %></p>
                         <small class="form-text">Author: <%= poste[i].author %></small><br>
                         <small class="form-text"><%= poste[i].date %></small><br>
-                        <a class="edit icon-link btn btn-success" href="/edit/<%= poste[i].id %>">Edit</a>
-                        <a class="delete icon-link btn btn-danger" href="/delete/<%= poste[i].id %>">Delete</a>
+                        <a class="edit icon-link btn btn-success" id="edit<%= poste[i].id %>" href="/edit/<%= poste[i].id %>">Edit</a>
+                        <a class="delete icon-link btn btn-danger" id="delete<%= poste[i].id %>" href="/delete/<%= poste[i].id %>">Delete</a>
                     </div>
           <% }} %>
         <% } %>       
