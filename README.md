@@ -5,7 +5,7 @@ This web uses API to store and edit data.
 ## Installation
 1. Clone the repository:
    ```sh
-   git clone https://github.com/Betty-Bai/post_nest
+   git clone https://github.com/Betty-Bai/post_nest_withAPI
 3. Navigate to the directory:
    ```sh
    cd folder-name
